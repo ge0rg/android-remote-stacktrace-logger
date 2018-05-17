@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
 
 group = 'com.github.somemove'
 
@@ -9,8 +10,8 @@ android {
 	defaultConfig {
 		minSdkVersion 19
 		targetSdkVersion 19
-		versionCode 1
-		versionName "1.0"
+		versionCode 2
+		versionName "1.1.0"
 	}
 
 	lintOptions {
@@ -28,7 +29,7 @@ android {
 		}
 		release {
 			debuggable false
-			minifyEnabled true
+			minifyEnabled false
 			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
 		}
 	}
