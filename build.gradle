@@ -1,6 +1,7 @@
 buildscript {
 	ext {
 		android_tools_version = '3.0.0'
+		android_maven_plugin_version = '2.1'
 	}
 
 	repositories {
@@ -11,6 +12,7 @@ buildscript {
 
 	dependencies {
 		classpath "com.android.tools.build:gradle:$android_tools_version"
+		classpath "com.github.dcendents:android-maven-gradle-plugin:$android_maven_plugin_version"
 	}
 }
 
