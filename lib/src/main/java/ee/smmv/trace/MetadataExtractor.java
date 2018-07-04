@@ -35,6 +35,6 @@ public abstract class MetadataExtractor {
 	 * Extract app-specific metadata and returns as key-value map.
 	 * @return Key-value map
 	 */
-	abstract Map<String, String> extract();
+	public abstract Map<String, String> extract();
 
 }
