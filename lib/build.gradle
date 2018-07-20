@@ -11,7 +11,7 @@ android {
 		minSdkVersion 17
 		targetSdkVersion 17
 		versionCode 4
-		versionName "1.2"
+		versionName "1.2.0"
 	}
 
 	lintOptions {
