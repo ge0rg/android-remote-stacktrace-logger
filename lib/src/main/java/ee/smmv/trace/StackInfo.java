@@ -17,11 +17,11 @@ public class StackInfo {
 	private final String mThreadName;
 	private final String mMessage;
 	private final List<StackTraceElement> mStacktrace;
-	private final Map<String, String> customMetadata;
+	private Map<String, String> customMetadata;
 	private StackInfo mCause;
 
 	public StackInfo(String packageVersion, String phoneModel,
-			String androidVersion, String exceptionType, String threadName, String message, List<StackTraceElement> stacktrace, Map<String, String> customMetadata) {
+			String androidVersion, String exceptionType, String threadName, String message, List<StackTraceElement> stacktrace) {
 		super();
 		mPackageVersion = packageVersion;
 		mPhoneModel = phoneModel;
@@ -30,7 +30,6 @@ public class StackInfo {
 		mMessage = message;
 		mStacktrace = stacktrace;
 		mExceptionType = exceptionType;
-		this.customMetadata = customMetadata;
 	}
 
 	/**
@@ -98,5 +97,10 @@ public class StackInfo {
 	 */
 	public Map<String, String> getCustomMetadata() {
 		return customMetadata;
+	}
+
+	public StackInfo setCustomMetadata(Map<String, String> customMetadata) {
+		this.customMetadata = customMetadata;
+		return this;
 	}
 }

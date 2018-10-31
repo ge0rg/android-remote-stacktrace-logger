@@ -16,6 +16,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.lang.Thread.UncaughtExceptionHandler;
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * An exception handler that records the exception stacktrace to a file
@@ -224,10 +225,10 @@ public class ExceptionHandler implements UncaughtExceptionHandler {
 								continue;
 							}
 							if (currentInfo == null) {
-								rootInfo = currentInfo = new StackInfo(version, phoneModel, buildVersion, exceptionType, thread, message, new ArrayList<>(), metadataExtractor.extract());
+								rootInfo = currentInfo = new StackInfo(version, phoneModel, buildVersion, exceptionType, thread, message, new ArrayList<>());
 							}
 							if (hasCause) {
-								StackInfo cause = new StackInfo(version, phoneModel, buildVersion, exceptionType, thread, message, new ArrayList<>(), metadataExtractor.extract());
+								StackInfo cause = new StackInfo(version, phoneModel, buildVersion, exceptionType, thread, message, new ArrayList<>());
 								currentInfo.addCause(cause);
 								currentInfo = cause;
 								hasCause = false;
@@ -244,6 +245,11 @@ public class ExceptionHandler implements UncaughtExceptionHandler {
 					}
 					stackInfos.add(rootInfo);
 				}
+				Map<String, String> metadata = metadataExtractor.extract();
+				for (StackInfo i : stackInfos) {
+					i.setCustomMetadata(metadata);
+				}
+
 				stackInfoSender.submitStackInfos(stackInfos, packageName);
 			}
 		} catch (FileNotFoundException e) {
